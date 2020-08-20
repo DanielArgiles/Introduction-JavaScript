@@ -1,0 +1,270 @@
+"""
+https://www.hektorprofe.net/curso/javascript-para-principiantes/que-es-javascript
+
+1- PRIMEROS PASOS
+
+JavaScript es uno de los lenguajes más famosos y utilizados del mundo.
+En perspectiva es el que tiene un crecimiento más constante y muchas grandes empresas como Netflix, Google, facebook y Paypal lo utilizan para desarrollar sus aplicaciones.
+Es sinónimo de empleo, tanto en el presente como en el futuro, ya que con él es posible especializarse en diferentes ramas:
+Desarrollador Front-end
+Desarrollador Back-end
+Desarrollador Full-Stack (ambas)
+
+
+¿Qué se puede crear con él?
+Actualmente JavaScript se puede utilizar para desarrollar:
+
+Aplicaciones web
+Aplicaciones móviles
+Aplicaciones con comunicación en tiempo real (chats, streaming...)
+Scripts y herramientas para la línea de comandos
+Videojuegos, tanto en 2D como 3D
+
+
+¿Cómo se ejecuta?
+Originalmente JavaScript se ideó para funcionar únicamente en navegadores, de manera que estos requerían incluir un motor para ejecutar su código. Por ej
+En 2009 un ingeniero llamado Ryan Dahl (~Döl) tomó el código open source del motor JavaScript de Chrome y lo embebió dentro de un programa de C++ al que llamó Node.
+Node es un programa que incluye el motor v8 y nos permite ejecutar código JavaScript fuera del navegador. 
+Esto hizo que JavaScript diera un salto, pasando de ser un lenguaje de frontend a un lenguaje todoterreno capaz de dar respuesta a todo tipo de necesidades.
+
+
+¿Qué es ECMAScript?
+ECMAScript es sólo una especificación, mientras que JavaScript es un lenguaje de programación que confirma esa especificación. 
+Es la organización ECMA (European Computers Manufacturers Association) la que se ocupa de desarrollar los estándares que luego se implementarán en los motores que ejecutarán JavaScript.
+Cada año se lanza una nueva revisión añadiendo mejoras al lenguaje.
+
+
+---------------------------------------------------
+PRIMER CONTACTO: 
+Pruebas para interactuar con el navegador de internet:
+Navegador google chrome, herramientas para desarrolladores o click derecho en inspeccionar.
+Apartado console. Limpiamos lo que haya.
+zoom : control + rueda ratón.
+-Actúa como print: console.log('Hola mundo');
+-Actúa también como calculadora: 2+2 y nos devuelve 4.
+-Pop-up: alert('Hola mundo');
+
+Estructura DOM (Document Object Model) o árbol de componentes:
+-Aparece el títlo que ponemos en la pestaña de la ventana: document.title='Nuevo título';
+document.title='Nuevo título otra vez';
+- No podemos hacer: document.body="algo";
+Para poder cambiar el contenido del body, jerarquía más compleja: document.body.innerHTML="algo";
+document.body.innerHTML="<h1> Cabecera de primer nivel </h1>";
+document.body.innerHTML+="<p> Esto es un parágrafo </p>";
+Observamos que estamos creando un documento html en vivo interactuando con el navegador. 
+
+---------------------------------------------------
+CONFIGURANDO EL ENTORNO:
+Necesitamps un editor de código: visual sudio code, sublime text, etc
+Descargar Nodejs: nodejs.org, versión lts
+nueva carpeta, nuevo fichero index.html
+Plantilla html: ! + tecla tabulador
+Instalamos otra extensión nueva que nos permitirá modificar el fichero html en el navegador en tiempo real
+Instalamos Live Server (visual studio) o LiveReload (sublime text)
+
+Preferences, package settings, livereload, settings default:
+pegar:
+
+{ 
+	"enabled_plugins": [ 
+		"SimpleReloadPlugin", 
+		"SimpleRefresh" 
+	]
+}
+
+Livereload: Enable plug-ins /enable-simple reload
+Instalamos extensión LiveReload en navegador.
+Abrimos index.html con el navegador y podemos activar o dsactivar la extensión.
+Si modificamos el archivo intex.html en sublime text y guardamos vemos los cambios en el navegador. 
+---------------------------------------------------
+EJECUCIÓN EN EL NAVEGADOR:
+Html tiene una etiqueta llamada script, que es la encargada de contener el código javascript.
+Tanto en el head como en el body.
+Lo más recomedable es añadirlo en el body al final. 
+
+Caso excepcional para poner script en el head: Relacionado con la carga de recursos y librerías de terceros
+
+En index.html:
+
+<body>
+	<h1> Hola mundo	 </h1>
+    
+	<script>
+	// Esto es un comentario
+	console.log("Hola mundo");
+	</script>
+		
+</body>
+
+Abrimos  index.html desde el navegador, click derecho, inspeccionar y console y veremos "hola mundo"
+---------------------------------------------------
+SEPARANDO EL CÓDIGO:
+Aplicaciones bien ordenadas.
+Nuevo fichero, index.js, trasladamos el código entre las etiquetas script de index.html a index.js :
+// Esto es un comentario
+	console.log("Hola mundo");
+
+En index.html:
+<script src="index.js"></script>
+
+Podemos guardar los ficheros javascript en una carpeta llamada js.
+En index.html:
+<script src="js/index.js"></script>
+---------------------------------------------------
+EJECUCIÓN EN NODE.JS (Lado del backend):
+En directorio de index.js, tecla shift, click derecho, abrir la ventana de PowerShell aquí.
+Escribimos node index.js (habiendo instalado previamente Nodejs: nodejs.org, versión lts) y al dar enter, nos devuelve "hola mundo" que es lo que hay en index.js
+También podemos hacerlo desde cmd o la terminal del programa sublime text, o cualquier editor.
+
+
+
+---------------------------------------------------
+---------------------------------------------------
+2- CONCEPTOS BÁSICOS
+VARIABLES
+Creamos una variable en el fichero index.js
+Borramos: 
+// Esto es un comentario
+console.log("Hola mundo  ");
+
+Añadimos:
+let nombre;
+console.log(nombre)
+veremos en el navegador undefined
+Inicializamos la variable let nombre='Daniel';
+Y ahora si veremos Daniel en el navegador
+
+let nombre='Daniel';
+console.log(nombre)
+
+No se puede usar nombres reservadas ej:  let if, let for...
+Podemos usasr : 
+let primer_apellido="Argilés"
+let primerApellido="Argilés" 
+
+
+---------------------------------------------------
+CONSTANTES
+
+Borramos el contenido de index.js y añadimos:
+let numero=50;
+numero=100;
+console.log(numero);
+
+Para proteger el valor inicial de una variable hacemos uso de las constantes.
+En lugar de usar let usamos const
+const numero=50;
+numero=100;
+console.log(numero);
+
+Esto dará error ya que numero no se puede modificar en la linea 2. 
+
+---------------------------------------------------
+TIPOS PRIMITIVOS (string,number,boolean,undefined,null)
+Borramos el contenido de index.js y añadimos:
+
+let nombre= 'Daniel'; // literal cadena
+let edad=29; // literal número
+let llevoGafas= false; //literal booleano
+let apellido; ó let apellido=undefined; //literal undefined
+apellido='Argilés';
+apellido=null;
+
+console.log(apellido);
+
+---------------------------------------------------
+TIPADO DINÁMICO (capacidad de las variables de cambiar su tipo dinámicamente en itempo de ejecución)
+En javascript o Python no es necesario establecer el tipo de la variable
+En la consola del navegador ponemos typeof nombre y será un string
+Si ahora cambio nombre= 10
+vemos typeof nombre = number
+
+Javascript no distingue entre números enteros y flotantes
+nombre= 10.5;
+typeof nombre sigue siendo number
+
+---------------------------------------------------
+TIPOS POR REFERENCIA (OBJETOS, ARREGLOS, FUNCIONES)
+OBJETO: Representación virtual de un objeto real.
+
+En index.js:
+
+let persona= {
+	nombre:'Daniel',
+	apellido:'Argilés',
+	edad: 29 //al final no se pone coma (,)
+}
+
+console.log(persona);
+
+Si hacemos lo siguiente, cambiamos directamente el nombre:
+persona.nombre='Pedro'; // también se puede: persona['nombre']= 'Pedro'
+console.log(persona);
+
+O de esta forma, cambiamos el apellido:
+let propiedad='apellido';
+persona [propiedad]= 'Pérez'
+console.log(persona);
+---------------------------------------------------
+ARREGLOS (ARRAYS)
+typeof de un array es un objeto
+
+En index.js:
+
+let nombres= ['Daniel','Pedro','Javier'];
+console.log(nombres);
+
+Mostrar solo un elemento:
+let nombres= ['Daniel','Pedro','Javier'];
+console.log(nombres[0]);
+
+
+Modificar y añadir elementos:
+let nombres= ['Daniel','Pedro','Javier'];
+nombres[3]= 'Juanito';
+nombres[4]=9;
+console.log(nombres);
+
+---------------------------------------------------
+FUNCIONES
+
+En index.js:
+
+function saludar(){
+	console.log('buenos días')
+}
+saludar();
+
+
+También podemos hacer: 
+
+function saludar(nombre){ // aquí nombre es un parámetro
+	console.log('buenos días ' + nombre)
+}
+
+saludar('Daniel');  // aquí 'Daniel' es un argumento
+saludar('Javier')
+
+También: 
+
+function saludar(nombre,apellido){
+	console.log('buenos días ' + nombre + apellido)
+}
+
+saludar('Daniel',' Argilés');
+
+---------------------------------------------------
+FUNCIONES CON RETORNO: 
+
+function doblar(numero) {
+	return numero *2;
+}
+
+let numero= doblar(5);
+console.log(numero);
+
+Podemos hacer: 
+let numero= doblar(doblar(doblar(5)));
+
+
+"""
